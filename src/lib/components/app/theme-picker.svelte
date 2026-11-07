@@ -39,8 +39,7 @@
 <div class="theme-picker" role="group" aria-label="Color theme">
 	<Button
 		variant="outline"
-		size="icon"
-		class="size-11"
+		size="icon-sm"
 		aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
 		title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
 		onclick={() => setTheme(isDark ? 'light' : 'dark')}
@@ -71,14 +70,13 @@
 	</Button>
 	<Button
 		variant={theme === 'system' ? 'secondary' : 'ghost'}
-		size="sm"
-		class="min-h-11"
+		size="icon-sm"
 		aria-label="Use system theme"
 		aria-pressed={theme === 'system'}
 		title="Follow your device’s light or dark appearance"
 		onclick={() => setTheme('system')}
 	>
-		<Monitor data-icon="inline-start" />System
+		<Monitor />
 	</Button>
 	<span class="sr-only" role="status">{storageMessage}</span>
 </div>
@@ -87,7 +85,7 @@
 	.theme-picker {
 		display: flex;
 		align-items: center;
-		gap: 6px;
+		gap: 4px;
 	}
 	.theme-glyph {
 		display: grid;
@@ -95,8 +93,8 @@
 		color: var(--primary);
 	}
 	.theme-glyph svg {
-		width: 22px;
-		height: 22px;
+		width: 18px;
+		height: 18px;
 	}
 	.sun-moon {
 		transform-origin: center;
