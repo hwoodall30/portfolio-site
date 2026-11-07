@@ -10,6 +10,13 @@ export type Evidence = {
 // Add authored experience here. Links and source labels are optional.
 export const evidence = [
 	{
+		id: 'signalflow',
+		title: 'Building a lightweight reactive UI library',
+		fact: 'Created SignalFlow, a JavaScript library that uses signals for fine-grained UI updates at runtime. Enables projects without a framework to add interactive widgets without a build step or heavy framework dependencies.',
+		href: 'https://github.com/hwoodall30/SignalFlow',
+		source: 'Personal project · SignalFlow'
+	},
+	{
 		id: 'freelance-websites',
 		title: 'Delivering websites for freelance clients',
 		fact: 'Built websites for a local graphic design company as a freelance developer, including Village Collab and Vote Facts Blount.',
