@@ -50,4 +50,19 @@ That opt-in run enables WebGPU in headless Chromium and skips when no usable ada
 - `src/routes/layout.css`: responsive visual system and reduced-motion support.
 - `static/Hunter-Woodall-Resume.pdf`: supplied resume, served for viewing and download.
 
-Contact details and public achievements come from the supplied resume. The merchandising story uses the account approved for publication. The role matcher needs no server queries, authentication, or persistence. Deployment is not configured; choose an adapter for the selected hosting provider.
+Contact details and public achievements come from the supplied resume. The merchandising story uses the account approved for publication. The role matcher needs no server queries, authentication, or persistence.
+
+## Coolify deployment
+
+The Node adapter builds a standalone production server into `build/`. The `start` script runs `node build`; use Node 22 for build and runtime.
+
+For a GitHub-connected application using Nixpacks, configure:
+
+- Site type: Dynamic (disable static-site mode).
+- Install command: `bun install --frozen-lockfile` (include development dependencies for the build).
+- Build command: `bun run build`.
+- Start command: `bun run start` (or directly `node build`).
+- Exposed port: `3000`.
+- Runtime environment: `HOST=0.0.0.0`, `PORT=3000`, and `ORIGIN=https://your-actual-domain`.
+
+Save the settings and redeploy after committing and pushing these changes. Use the final public HTTPS origin, including a custom port if applicable, without a path. HTTPS also enables browser-local AI/WebGPU. A blank start command can leave the container executing Bash without a command; the Node adapter and explicit start command supply the production entry point.
