@@ -3,16 +3,16 @@
 </script>
 
 <svelte:head>
-	<title>Hunter Woodall — Engineering thoughtful products</title>
+	<title>Hunter Woodall — Software Engineer</title>
 	<meta
 		name="description"
-		content="Hunter Woodall is a lead software engineer turning complex problems into useful products. Explore engineering leadership, frontend craft, and human-centered AI."
+		content="Hunter Woodall, lead software engineer. Work in product discovery, frontend development, AI, and engineering leadership."
 	/>
 	<meta name="theme-color" content="#f6f5f0" />
-	<meta property="og:title" content="Hunter Woodall — Engineering thoughtful products" />
+	<meta property="og:title" content="Hunter Woodall — Software Engineer" />
 	<meta
 		property="og:description"
-		content="Engineering leadership, frontend craft, and AI with a human in control. Find the experience relevant to your team."
+		content="A few projects, my engineering background, and a way to compare your role with my experience."
 	/>
 </svelte:head>
 

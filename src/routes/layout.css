@@ -130,29 +130,14 @@ a:focus-visible {
 	padding: 0 64px;
 }
 .eyebrow {
-	font: 9px/1.6 var(--font-mono);
-	letter-spacing: 0.12em;
+	font: 10px/1.6 var(--font-mono);
+	letter-spacing: 0.04em;
 	color: var(--muted-foreground);
 }
 .tiny-mono {
 	font: 9px/1.6 var(--font-mono);
 	letter-spacing: 0.025em;
 	color: var(--muted-foreground);
-}
-.status-dot {
-	display: inline-block;
-	width: 6px;
-	height: 6px;
-	background: var(--vol-orange);
-	border-radius: 50%;
-	flex-shrink: 0;
-}
-.serif-accent {
-	font-family: Georgia, 'Times New Roman', serif;
-	font-weight: 400;
-	font-style: italic;
-	color: var(--primary);
-	letter-spacing: -0.055em;
 }
 .site-header {
 	display: flex;
@@ -209,20 +194,20 @@ a:focus-visible {
 	align-items: center;
 	gap: 9px;
 	margin-bottom: 25px;
-	font-size: 8px;
+	font-size: 11px;
 }
 .hero h1 {
 	font-size: clamp(49px, 5.7vw, 75px);
 	line-height: 1.055;
-	font-weight: 480;
-	letter-spacing: -0.065em;
+	font-weight: 550;
+	letter-spacing: -0.045em;
 }
 .hero-description {
 	max-width: 340px;
 	margin-top: 26px;
 	color: var(--muted-foreground);
-	font-size: 13px;
-	line-height: 1.85;
+	font-size: 15px;
+	line-height: 1.75;
 }
 .hero-actions {
 	display: flex;
@@ -275,18 +260,6 @@ a:focus-visible {
 	flex-shrink: 0;
 	margin-top: 27px;
 	margin-inline: -25px;
-}
-.visual-orbit {
-	border: 1px dashed var(--border);
-	position: absolute;
-	width: 90%;
-	height: 47%;
-	border-radius: 50%;
-	top: 105px;
-	left: 5%;
-	transform: rotate(-24deg);
-	opacity: 0.65;
-	pointer-events: none;
 }
 .park-caption {
 	position: absolute;
@@ -408,7 +381,7 @@ a:focus-visible {
 	gap: 24px;
 }
 h2 {
-	font-size: clamp(34px, 3.6vw, 46px);
+	font-size: clamp(30px, 3.2vw, 40px);
 	font-weight: 450;
 	letter-spacing: -0.055em;
 	line-height: 1.14;
@@ -434,10 +407,6 @@ h2 {
 	display: flex;
 	align-items: center;
 	gap: 15px;
-}
-.project-number {
-	font: 10px var(--font-mono);
-	color: var(--muted-foreground);
 }
 .project-intro h3 {
 	font-size: 22px;
@@ -518,8 +487,8 @@ h2 {
 	color: var(--primary);
 }
 .case-details > div > p {
-	font-size: 11px;
-	line-height: 1.95;
+	font-size: 13px;
+	line-height: 1.85;
 	color: var(--muted-foreground);
 	margin-top: 8px;
 }
@@ -534,9 +503,9 @@ h2 {
 	letter-spacing: 0.05em;
 }
 .case-takeaway > p {
-	font-size: 17px !important;
+	font-size: 14px !important;
 	line-height: 1.6 !important;
-	color: var(--primary) !important;
+	color: var(--foreground) !important;
 	letter-spacing: -0.025em;
 }
 .about-section {
@@ -550,8 +519,8 @@ h2 {
 	margin: 20px 0 27px;
 }
 .about-copy > p:not(.eyebrow) {
-	font-size: 12px;
-	line-height: 1.95;
+	font-size: 14px;
+	line-height: 1.85;
 	color: var(--muted-foreground);
 	margin-bottom: 17px;
 	max-width: 405px;
@@ -560,33 +529,15 @@ h2 {
 	margin-top: 6px;
 }
 .builder-note {
-	background: var(--accent);
-	padding: 27px 32px 24px;
+	border-left: 2px solid var(--border);
+	padding: 12px 0 12px 24px;
 	position: relative;
 }
 .builder-note > p {
-	font-size: 22px;
-	letter-spacing: -0.035em;
+	font-size: 18px;
+	letter-spacing: -0.015em;
 	line-height: 1.65;
 	margin: 16px 0;
-}
-.builder-note > p > span {
-	color: var(--primary);
-	font-family: Georgia, serif;
-	font-style: italic;
-}
-.note-cross {
-	position: absolute;
-	top: 14px;
-	right: 15px;
-	font: 19px var(--font-mono);
-	color: var(--primary);
-}
-.note-signature {
-	font-family: Georgia, serif;
-	font-style: italic;
-	font-size: 18px;
-	color: var(--primary);
 }
 .skills-list {
 	margin-top: 20px;
@@ -795,9 +746,6 @@ h2 {
 		top: 288px;
 		right: 0;
 	}
-	.visual-orbit {
-		top: 80px;
-	}
 	.hero-invitation {
 		margin-left: 0;
 	}
@@ -939,7 +887,7 @@ h2 {
 		letter-spacing: 0.07em;
 	}
 	.hero h1 {
-		font-size: 53px;
+		font-size: clamp(40px, 11vw, 53px);
 	}
 	.hero-description {
 		font-size: 12px;
@@ -957,10 +905,6 @@ h2 {
 	.visual-coordinate {
 		font-size: 7px;
 		top: 5px;
-	}
-	.visual-orbit {
-		top: 85px;
-		height: 40%;
 	}
 	.park-caption {
 		top: 245px;

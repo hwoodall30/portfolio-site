@@ -3,7 +3,6 @@
 	import { inspectModelCache, clearModelCache, type ModelCache } from '#lib/role-match/cache.js';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
-	import Sparkles from '@lucide/svelte/icons/sparkles';
 	import { Button } from '#lib/components/ui/button/index.js';
 	import * as Field from '#lib/components/ui/field/index.js';
 	import * as Alert from '#lib/components/ui/alert/index.js';
@@ -128,8 +127,8 @@
 
 <section class="role-matcher" aria-label="Match a role to Hunter’s experience">
 	<div class="match-entry">
-		<p class="eyebrow"><Sparkles size={13} /> A SHORTCUT TO THE RELEVANT PARTS</p>
-		<h3>Your role.<br /><span class="serif-accent">My experience.</span></h3>
+		<p class="eyebrow">ROLE COMPARISON</p>
+		<h3>What does your team need?</h3>
 		<p class="match-intro">
 			Paste a job description or tell me what your team needs. Find the connections to work I’ve
 			actually done.
@@ -161,7 +160,7 @@
 					>
 				</Field.Field>
 				<Button type="submit" disabled={busy || !input.trim()}
-					><Sparkles data-icon="inline-start" />{aiState === 'loading'
+					><ArrowRight data-icon="inline-start" />{aiState === 'loading'
 						? 'Preparing local AI…'
 						: aiState === 'working'
 							? 'Finding connections…'
@@ -269,7 +268,7 @@
 					? 'EXAMPLE PREVIEW · NO AI USED'
 					: 'LOCAL AI · VERIFY RELEVANCE'}
 			</p>
-			<h4>{result.matches.length ? 'Here’s where we connect.' : 'No clear connection found.'}</h4>
+			<h4>{result.matches.length ? 'Relevant experience' : 'No clear connection found.'}</h4>
 			<p class="result-note">
 				{resultSource === 'example'
 					? 'An authored example of what this tool can surface. Edit the description to match your own role.'
@@ -307,14 +306,14 @@
 		{:else}
 			<div class="match-empty">
 				<span class="match-mark"><ArrowUpRight size={30} /></span>
-				<h4>Less searching.<br /><span class="serif-accent">More connection.</span></h4>
+				<h4>Try a role or an example.</h4>
 				<p>
 					Find up to three relevant pieces of experience, with supporting links where available.
 				</p>
 				<ol>
 					<li><span>01</span>Describe the role or team challenge.</li>
 					<li><span>02</span>Let local AI find possible connections.</li>
-					<li><span>03</span>Follow the evidence. Start a conversation.</li>
+					<li><span>03</span>Read the matches and supporting links.</li>
 				</ol>
 				<a class="text-link" href="#case-study">Prefer to read the work? <ArrowRight size={14} /></a
 				>
@@ -350,7 +349,7 @@
 		grid-template-columns: 1fr 1fr;
 		border: 1px solid var(--border);
 		background: var(--card);
-		border-radius: 10px;
+		border-radius: 4px;
 		overflow: hidden;
 		margin-bottom: 55px;
 	}
@@ -366,7 +365,7 @@
 		gap: 8px;
 	}
 	.match-entry h3 {
-		font-size: 40px;
+		font-size: 30px;
 		line-height: 1.05;
 		letter-spacing: -0.05em;
 		font-weight: 450;

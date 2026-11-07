@@ -14,14 +14,14 @@
 	let easterEgg = $state(false);
 	const skills = [
 		{
-			title: 'Product & leadership',
+			title: 'Leading teams',
 			items: 'Solution architecture · Team mentorship · Cross-functional delivery'
 		},
 		{
-			title: 'Interfaces & experiences',
+			title: 'Frontend',
 			items: 'TypeScript · SvelteKit · React / Next.js · Tailwind · Playwright'
 		},
-		{ title: 'AI & systems', items: 'Agents · RAG · MCP · Go · Python · GraphQL · AWS' }
+		{ title: 'Backend & AI', items: 'Agents · RAG · MCP · Go · Python · GraphQL · AWS' }
 	];
 </script>
 
@@ -34,7 +34,7 @@
 		<div class="header-actions">
 			<nav aria-label="Main navigation">
 				<a href="#work">Work</a><a href="#about">About</a><a href="#contact" class="contact-nav"
-					>Let’s talk <ArrowUpRight size={14} /></a
+					>Contact <ArrowUpRight size={14} /></a
 				>
 			</nav>
 			<ThemePicker />
@@ -43,21 +43,16 @@
 	<main id="main">
 		<section class="hero" aria-labelledby="hero-title">
 			<div class="hero-copy">
-				<p class="eyebrow hero-eyebrow">
-					<span class="status-dot"></span> ENGINEERING LEADER. PRODUCT BUILDER.
-				</p>
+				<p class="eyebrow hero-eyebrow">Lead software engineer at Zoovu</p>
 				<h1 id="hero-title">
-					I turn complex<br />problems into<br />products
-					<span class="serif-accent">people<br />can use.</span>
+					I’m Hunter.<br />I build software<br />and lead teams.
 				</h1>
 				<p class="hero-description">
-					I’m Hunter, a lead software engineer who connects the dots between people, thoughtful
-					interfaces, and dependable systems.
+					My background is in mechanical engineering. These days I work on product discovery,
+					interfaces, and the systems behind them.
 				</p>
 				<div class="hero-actions">
-					<Button href="#work" size="lg"
-						>Explore my work <ArrowDown data-icon="inline-end" /></Button
-					><a
+					<Button href="#work" size="lg">See my work <ArrowDown data-icon="inline-end" /></Button><a
 						class="text-link"
 						href={asset('Hunter-Woodall-Resume.pdf')}
 						target="_blank"
@@ -67,33 +62,29 @@
 			</div>
 			<div class="hero-visual">
 				<div class="visual-coordinate top-left">
-					OFF THE CLOCK<br /><span>A LITTLE LOVE FOR THE GAME</span>
+					OFF THE CLOCK<br /><span>Usually thinking about baseball.</span>
 				</div>
-				<div class="visual-orbit"></div>
 				<div class="hero-ballpark"><Ballpark /></div>
 				<div class="park-caption">
-					<span class="caption-line"></span><span
-						>A LOVE OF SYSTEMS.<br />A SOFT SPOT FOR BASEBALL.</span
-					>
+					<span class="caption-line"></span><span>A small ballpark<br />for the homepage.</span>
 				</div>
 				<a class="hero-invitation" href="#role-match"
 					><span class="invitation-icon"><ArrowUpRight size={20} /></span><span
-						><strong>Your next hire? Let’s find the connection.</strong><small
-							>Match your role to my experience</small
+						><strong>Hiring for your team?</strong><small>Compare a role with my experience</small
 						></span
 					><ArrowRight size={16} /></a
 				>
 			</div>
 		</section>
 		<div class="hero-footnote">
-			<span>CURRENTLY LEADING SOFTWARE ENGINEERING AT ZOOVU</span><span
-				>FROM THE FIRST QUESTION TO THE FINAL DETAIL <span>↘</span></span
+			<span>ZOOVU · PREVIOUSLY XGEN AI</span><span
+				>Software, teams, and a bit of baseball <span>↘</span></span
 			>
 		</div>
 		<section id="impact" class="impact" aria-label="Selected career accomplishments">
 			<div class="impact-intro">
-				<span class="eyebrow">BUILT TO MAKE<br />A DIFFERENCE.</span>
-				<p>A few numbers.<br />A lot of work behind them.</p>
+				<span class="eyebrow">A FEW NUMBERS</span>
+				<p>From my work<br />at XGen AI and Zoovu.</p>
 			</div>
 			<div class="metric">
 				<strong>10<span> engineers</span></strong>
@@ -111,33 +102,31 @@
 		<section id="work" class="work-section">
 			<div class="section-heading">
 				<div>
-					<p class="eyebrow">01 / SELECTED WORK</p>
-					<h2>Good ideas deserve<br /><span class="serif-accent">a working version.</span></h2>
+					<p class="eyebrow">WORK</p>
+					<h2>A few things I’ve worked on.</h2>
 				</div>
 				<p>
-					I care about what happens between<br />“what if” and “this actually works.”<br />Here’s a
-					little of both.
+					A browser experiment and a project<br />from my work at XGen AI.
 				</p>
 			</div>
 			<div id="role-match" class="project-intro">
 				<div>
-					<span class="project-number">001</span>
 					<h3>Find the relevant experience</h3>
 				</div>
-				<span class="project-type">A PRACTICAL USE OF LOCAL AI</span>
+				<span class="project-type">BROWSER EXPERIMENT</span>
 			</div>
 			<div class="project-description">
 				<p>
-					A quick way to connect what your team needs with work I’ve done. Try an example instantly,
-					or match your own role privately on your device.
+					Paste a role to see which parts of my background are relevant. You can try an example
+					first, or run the model on your device.
 				</p>
 			</div>
 			<RoleMatcher />
 			<article id="case-study" class="case-study" aria-labelledby="case-title">
 				<div class="case-story">
-					<p class="eyebrow">002 / FROM THE REAL WORLD</p>
+					<p class="eyebrow">XGEN AI / CASE STUDY</p>
 					<h3 id="case-title">
-						Plain language in.<br /><span class="serif-accent">Predictable results out.</span>
+						Building product filters<br />in plain English.
 					</h3>
 					<p class="case-lede">
 						Helping enterprise merchandisers build complex filters without an engineering handoff.
@@ -159,7 +148,7 @@
 						</p>
 					</div>
 					<div>
-						<span class="case-step">THE DECISION</span>
+						<span class="case-step">WHAT I BUILT</span>
 						<p>
 							I designed and built an agent grounded in each customer’s catalog schema. It wrote
 							deterministic filters for our filtering engine. Merchandisers could inspect and adjust
@@ -174,19 +163,19 @@
 						</p>
 					</div>
 					<div class="case-takeaway">
-						<span>THE PRINCIPLE BEHIND THE WORK</span>
-						<p>Let AI translate intent.<br />Keep people in control of the outcome.</p>
+						<span>WHY THIS APPROACH</span>
+						<p>The model wrote the rules; merchandisers could check and edit them.</p>
 					</div>
 				</div>
 			</article>
 		</section>
 		<section id="about" class="about-section">
 			<div class="about-copy">
-				<p class="eyebrow">02 / A LITTLE CONTEXT</p>
-				<h2>An engineer’s mind.<br /><span class="serif-accent">A builder’s instinct.</span></h2>
+				<p class="eyebrow">ABOUT</p>
+				<h2>How I got here.</h2>
 				<p>
-					I started in mechanical engineering—working on equipment, manufacturing processes, and the
-					systems people rely on. Software became another way to solve those problems.
+					I started in mechanical engineering, working on equipment, manufacturing processes, and
+					the systems people rely on. Software became another way to solve those problems.
 				</p>
 				<p>
 					Today, I lead software engineering at Zoovu, following its acquisition of XGen AI. My work
@@ -203,12 +192,8 @@
 			</div>
 			<div class="about-detail">
 				<div class="builder-note">
-					<span class="note-cross">+</span><span class="eyebrow">HOW I LIKE TO WORK</span>
-					<p>
-						Understand the person.<br />Find the right problem.<br />Build with intention.<br
-						/><span>Care about the details.</span>
-					</p>
-					<span class="note-signature">Hunter W.</span>
+					<span class="eyebrow">AWAY FROM WORK</span>
+					<p>Building PCs, running things on my own servers, and keeping up with baseball.</p>
 				</div>
 				<div class="skills-list">
 					{#each skills as skill}<div>
@@ -220,11 +205,10 @@
 		</section>
 		<section id="contact" class="contact-section">
 			<div>
-				<p class="eyebrow">03 / WHAT’S NEXT?</p>
-				<h2>Let’s build something<br /><span class="serif-accent">worth figuring out.</span></h2>
+				<p class="eyebrow">CONTACT</p>
+				<h2>Get in touch.</h2>
 				<p>
-					Have a complex product challenge or a team that cares about craft?<br />I’d like to hear
-					about it.
+					If you’re hiring or want to talk about a project,<br />send me an email.
 				</p>
 				<a class="email-link" href="mailto:hwoodall30@gmail.com"
 					>hwoodall30@gmail.com <ArrowUpRight /></a
@@ -244,7 +228,7 @@
 	</main>
 	<footer class="site-footer">
 		<span>© {new Date().getFullYear()} HUNTER WOODALL</span><span class="footer-built"
-			>THOUGHTFULLY BUILT. ALWAYS A WORK IN PROGRESS.</span
+			>SvelteKit, TypeScript, and a little Three.js.</span
 		><button
 			class="baseball-button"
 			aria-label="Discover a baseball Easter egg"
@@ -261,8 +245,8 @@
 	</footer>
 	{#if easterEgg}<div class="easter-egg" role="status">
 			<span class="eyebrow">THE SEVENTH-INNING STRETCH</span>
-			<p>Step away from the screen.<br />There’s always another inning.</p>
-			<span class="tiny-mono">A SMALL REMINDER FROM A BASEBALL FAN.</span><Button
+			<p>Time for a stretch. Baseball can wait through a rain delay; so can this.</p>
+			<span class="tiny-mono">Thanks for stopping by.</span><Button
 				variant="ghost"
 				size="sm"
 				onclick={() => (easterEgg = false)}
