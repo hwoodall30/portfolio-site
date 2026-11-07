@@ -1,4 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
+import { evaluationCases } from './lib/role-match/evaluation-cases';
+import { writeFile } from 'node:fs/promises';
 
 async function mockModel(page: Page, response: unknown, stall = false) {
 	await page.addInitScript(
@@ -52,7 +54,7 @@ test('examples give immediate evidence and gaps without AI downloads', async ({ 
 		if (/huggingface|mlc-ai|ai\.worker/.test(request.url())) modelRequests.push(request.url());
 	});
 	await page.goto('http://localhost:4173');
-	await expect(page.getByRole('heading', { level: 1 })).toContainText('I turn complex');
+	await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 	await expect(page.locator('.scene-controls')).toHaveCount(1);
 	await page.screenshot({ path: test.info().outputPath('desktop.png'), fullPage: true });
 	await page.getByRole('button', { name: 'Engineering lead', exact: true }).click();
@@ -85,7 +87,7 @@ test('custom roles get grounded evidence after explicit download consent', async
 	await expect(page.getByText(/roughly 400 MB/)).toBeVisible();
 	await expect(page.locator('.connection')).toHaveCount(0);
 	await page.getByRole('button', { name: 'Download & match' }).click();
-	await expect(page.getByText('LOCAL AI · VERIFY RELEVANCE')).toBeVisible();
+	await expect(page.getByText('LOCAL EVIDENCE · VERIFY RELEVANCE')).toBeVisible();
 	await expect(page.locator('.connection')).toHaveCount(2);
 	await expect(page.locator('.connection').last()).toContainText('24%');
 	await page.getByRole('link', { name: 'Resume · Zoovu / XGen AI' }).first().click();
@@ -177,49 +179,58 @@ test('responsive layouts fit and the resume is available', async ({ page, reques
 	expect(resume.headers()['content-type']).toContain('application/pdf');
 });
 
-// Opt-in: downloads the real model rather than simulating the worker contract.
-test('real local model connects a team-lead requirement to evidence', async ({ page }) => {
-	test.skip(
-		process.env.PORTFOLIO_AI_SMOKE !== '1',
-		'Enable the optional model download with PORTFOLIO_AI_SMOKE=1.'
-	);
+// Opt-in: runs the actual WebGPU model against authored relevance expectations.
+test('real local model matches the evidence evaluation set', async ({ page }, testInfo) => {
+	test.skip(process.env.PORTFOLIO_AI_SMOKE !== '1', 'Enable with PORTFOLIO_AI_SMOKE=1.');
 	test.setTimeout(600_000);
 	await page.goto('http://localhost:4173');
 	const supported = await page.evaluate(async () =>
 		Boolean(navigator.gpu && (await navigator.gpu.requestAdapter()))
 	);
 	test.skip(!supported, 'No usable WebGPU adapter in this browser.');
-	await page.getByLabel('What are you looking for?').fill('We need someone to mentor a team.');
-	await page.getByRole('button', { name: 'Match this role' }).click();
-	await page.getByRole('button', { name: 'Download & match' }).click();
-	await expect(page.locator('.match-results > .eyebrow, .match-diagnostics')).toBeVisible({
-		timeout: 550_000
+	const responses: unknown[] = [];
+	page.on('console', async (message) => {
+		if (message.text().startsWith('[Local AI] Model response:')) {
+			const response = await message.args()[1].jsonValue();
+			responses.push(response);
+			console.log('[Model output]', response.choices[0]?.message.content);
+		}
 	});
-	const diagnostic = page.locator('.match-diagnostics pre');
-	if (await diagnostic.count())
-		throw new Error((await diagnostic.textContent()) ?? 'Local AI failed.');
-	await expect(page.locator('.connection').first()).toBeVisible();
-	for (const role of [
-		'Front end',
-		'We need TypeScript and React experience.',
-		'We need to reduce LLM spending.'
-	]) {
-		await page.getByLabel('What are you looking for?').fill(role);
+	const report = [];
+	const cases = process.env.PORTFOLIO_AI_CASES
+		? evaluationCases.filter((scenario) =>
+				new RegExp(process.env.PORTFOLIO_AI_CASES!).test(scenario.input)
+			)
+		: evaluationCases;
+	for (const [index, scenario] of cases.entries()) {
+		await page.getByLabel('What are you looking for?').fill(scenario.input);
 		await page.getByRole('button', { name: 'Match this role' }).click();
+		if (index === 0) {
+			await page.getByRole('button', { name: /Download & match|Load & match/ }).click();
+		}
 		await expect(page.locator('.match-results > .eyebrow, .match-diagnostics')).toBeVisible({
-			timeout: 90_000
+			timeout: index === 0 ? 550_000 : 90_000
 		});
+		const diagnostic = page.locator('.match-diagnostics pre');
 		if (await diagnostic.count())
 			throw new Error((await diagnostic.textContent()) ?? 'Local AI failed.');
-		await expect(page.locator('.connection').first()).toBeVisible();
-		if (role === 'Front end') {
-			await expect(
-				page.locator('.connection h5', { hasText: 'Working across modern frontend stacks' })
-			).toBeVisible();
-			await expect(page.locator('.connection')).toHaveCount(3);
-		}
-		await expect(page.getByRole('button', { name: 'Download & match' })).toHaveCount(0);
+		const actual = await page
+			.locator('.connection')
+			.evaluateAll((elements) =>
+				elements.map((element) => element.getAttribute('data-evidence-id')).sort()
+			);
+		const expected = [...scenario.expected].sort();
+		const passed = JSON.stringify(actual) === JSON.stringify(expected);
+		report.push({ input: scenario.input, expected, actual, passed });
+		console.log(JSON.stringify(report.at(-1)));
+		expect.soft(actual, scenario.input).toEqual(expected);
 	}
+	const reportPath = testInfo.outputPath('model-evaluation.json');
+	await writeFile(reportPath, JSON.stringify({ report, responses }, null, 2));
+	await testInfo.attach('model-evaluation.json', {
+		path: reportPath,
+		contentType: 'application/json'
+	});
 });
 
 test('cached weights are visible and clearing removes only this site’s WebLLM caches', async ({

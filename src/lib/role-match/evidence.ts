@@ -20,7 +20,15 @@ export const evidence = [
 	},
 	{
 		id: 'freelance-websites',
-		tags: ['frontend', 'web development', 'websites', 'freelance', 'client delivery'],
+		tags: [
+			'frontend',
+			'web development',
+			'websites',
+			'freelance',
+			'freelance web development',
+			'graphic design',
+			'client delivery'
+		],
 		title: 'Delivering websites for freelance clients',
 		fact: 'Built websites for a local graphic design company as a freelance developer, including Village Collab and Vote Facts Blount.',
 		links: [
@@ -31,7 +39,7 @@ export const evidence = [
 	},
 	{
 		id: 'workout-rivals',
-		tags: ['application development', 'fitness', 'competitions', 'statistics tracking'],
+		tags: ['application development', 'fitness', 'fitness competitions', 'statistics tracking'],
 		title: 'Building a fitness competition app',
 		fact: 'Created Workout Rivals, an application that lets users start fitness competitions with one another and track their workout statistics throughout each competition.',
 		href: 'https://workout-rivals.woodallstack.dev/',
@@ -55,6 +63,8 @@ export const evidence = [
 		id: 'leadership',
 		tags: [
 			'engineering leadership',
+			'engineering management',
+			'junior engineers',
 			'mentoring',
 			'team management',
 			'architecture',
@@ -76,7 +86,7 @@ export const evidence = [
 		id: 'intent',
 		tags: [
 			'AI agents',
-			'natural language',
+			'natural language filters',
 			'catalog data',
 			'deterministic filters',
 			'product engineering'
@@ -137,6 +147,7 @@ export const evidence = [
 			'manufacturing',
 			'operational dashboards',
 			'inventory automation',
+			'inventory',
 			'process engineering'
 		],
 		title: 'Connecting software to physical operations',
@@ -170,7 +181,7 @@ export const evidence = [
 	},
 	{
 		id: 'mcp-tooling',
-		tags: ['MCP', 'AI tools', 'natural language', 'administration', 'role-scoped access'],
+		tags: ['MCP', 'AI tools', 'natural language administration', 'role-scoped access'],
 		title: 'Building MCP tools for natural-language administration',
 		fact: 'Built an MCP server that gives staff natural-language administrative control and provides customers with role-scoped, read-only access.',
 		source: 'Resume · XGen AI'
@@ -182,7 +193,10 @@ export const evidence = [
 			'implementations',
 			'onboarding',
 			'cross-functional collaboration',
-			'customer feedback'
+			'customer feedback',
+			'Gucci',
+			'Sonos',
+			'Coach customer'
 		],
 		title: 'Guiding enterprise implementations and onboarding',
 		fact: 'Leads customer implementations and onboarding, partnering with Product, Design, and Operations to prioritize improvements informed by customer feedback. Led a team delivering AI software to enterprise customers including Gucci, Sonos, and Coach.',
@@ -204,9 +218,8 @@ export function validateMatch(value: unknown, input: string): RoleMatch {
 	const result = value as Record<string, unknown>;
 	if (
 		!Array.isArray(result.matches) ||
-		result.matches.length > 3 ||
-		!Array.isArray(result.gaps) ||
-		result.gaps.length > 3
+		result.matches.length > evidence.length ||
+		!Array.isArray(result.gaps)
 	)
 		throw new Error('Invalid result structure.');
 	const quoted = (text: unknown): text is string =>

@@ -274,17 +274,17 @@
 			<p class="eyebrow">
 				{resultSource === 'example'
 					? 'EXAMPLE PREVIEW · NO AI USED'
-					: 'LOCAL AI · VERIFY RELEVANCE'}
+					: 'LOCAL EVIDENCE · VERIFY RELEVANCE'}
 			</p>
 			<h4>{result.matches.length ? 'Relevant experience' : 'No clear connection found.'}</h4>
 			<p class="result-note">
 				{resultSource === 'example'
 					? 'An authored example of what this tool can surface. Edit the description to match your own role.'
-					: 'AI selected these possible connections from experience I’ve provided. Sources and links are included where available.'}
+					: 'These connections come from experience I’ve provided. Review the sources and links to judge relevance.'}
 			</p>
 			{#each result.matches as connection (connection.evidenceId)}
 				{@const item = getEvidence(connection.evidenceId)}
-				<article class="connection">
+				<article class="connection" data-evidence-id={connection.evidenceId}>
 					<p class="requirement">YOU’RE LOOKING FOR</p>
 					<blockquote>“{connection.requirement}”</blockquote>
 					<h5>{item.title}</h5>
@@ -325,9 +325,7 @@
 			<div class="match-empty">
 				<span class="match-mark"><ArrowUpRight size={30} /></span>
 				<h4>Try a role or an example.</h4>
-				<p>
-					Find up to three relevant pieces of experience, with supporting links where available.
-				</p>
+				<p>Find relevant experience, with supporting links where available.</p>
 				<ol>
 					<li><span>01</span>Describe the role or team challenge.</li>
 					<li><span>02</span>Let local AI find possible connections.</li>

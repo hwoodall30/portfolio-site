@@ -33,6 +33,13 @@ describe('grounded role matching', () => {
 			validateMatch({ matches: [], gaps: ['aviation certification'] }, 'aviation certification')
 		).toEqual({ matches: [], gaps: ['aviation certification'] });
 	});
+	it('keeps every matching entry when more than three support a topic', () => {
+		const input = 'Front end';
+		const matches = ['frontend', 'signalflow', 'freelance-websites', 'backend-apis'].map(
+			(evidenceId) => ({ evidenceId, requirement: input })
+		);
+		expect(validateMatch({ matches, gaps: [] }, input)).toEqual({ matches, gaps: [] });
+	});
 	it('discards generated commentary and keeps authored source destinations', () => {
 		expect(
 			validateMatch(
