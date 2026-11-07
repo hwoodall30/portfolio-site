@@ -51,6 +51,6 @@ describe('grounded role matching', () => {
 				'mentor a team'
 			)
 		).toEqual({ matches: [{ evidenceId: 'leadership', requirement: 'mentor a team' }], gaps: [] });
-		expect(evidence.every((item) => item.href.startsWith('#'))).toBe(true);
+		expect(evidence.every((item) => !item.href || item.href.startsWith('#'))).toBe(true);
 	});
 });

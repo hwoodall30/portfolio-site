@@ -201,7 +201,7 @@
 						{weightsCached
 							? 'Loading cached model into memory'
 							: 'Downloading and preparing the model'} · {progress}%.
-					</p>{:else}<p>Reading your requirements against the published experience…</p>{/if}<Button
+					</p>{:else}<p>Reading your requirements against the experience provided…</p>{/if}<Button
 					variant="ghost"
 					size="sm"
 					onclick={cancel}>Cancel</Button
@@ -273,7 +273,7 @@
 			<p class="result-note">
 				{resultSource === 'example'
 					? 'An authored example of what this tool can surface. Edit the description to match your own role.'
-					: 'AI selected these possible connections. The facts and source links below come from my published experience.'}
+					: 'AI selected these possible connections from experience I’ve provided. Sources and links are included where available.'}
 			</p>
 			{#each result.matches as connection (connection.evidenceId)}
 				{@const item = getEvidence(connection.evidenceId)}
@@ -282,13 +282,19 @@
 					<blockquote>“{connection.requirement}”</blockquote>
 					<h5>{item.title}</h5>
 					<p>{item.fact}</p>
-					<a href={item.href}>{item.source}<ArrowUpRight size={13} /></a>
+					{#if item.href}
+						<!-- Authored evidence links are page fragments or external URLs, not app routes. -->
+						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+						<a href={item.href}>{item.source || 'View evidence'}<ArrowUpRight size={13} /></a>
+					{:else if item.source}
+						<p>{item.source}</p>
+					{/if}
 				</article>
 			{/each}
 			{#if result.gaps.length}<div class="match-gaps">
 					<h5>Worth discussing</h5>
 					<p>
-						These requirements aren’t established by the published material. That’s a gap in
+						These requirements aren’t established by the experience provided. That’s a gap in
 						evidence, not a claim about ability.
 					</p>
 					<ul>
@@ -302,7 +308,9 @@
 			<div class="match-empty">
 				<span class="match-mark"><ArrowUpRight size={30} /></span>
 				<h4>Less searching.<br /><span class="serif-accent">More connection.</span></h4>
-				<p>Find up to three relevant pieces of experience, each with evidence you can follow.</p>
+				<p>
+					Find up to three relevant pieces of experience, with supporting links where available.
+				</p>
 				<ol>
 					<li><span>01</span>Describe the role or team challenge.</li>
 					<li><span>02</span>Let local AI find possible connections.</li>

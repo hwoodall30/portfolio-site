@@ -1,9 +1,24 @@
+export type Evidence = {
+	id: string;
+	title: string;
+	fact: string;
+	href?: `#${string}` | `https://${string}` | `http://${string}`;
+	source?: string;
+};
+
+// Add authored experience here. Links and source labels are optional.
 export const evidence = [
 	{
 		id: 'leadership',
 		title: 'Leading engineers through delivery',
 		fact: 'Leads and mentors 10 engineers across experience levels. Serves as primary technical solution designer, translating customer needs into architectures and implementation plans.',
 		href: '#about',
+		source: 'Resume · Zoovu / XGen AI'
+	},
+	{
+		id: 'generative-ai',
+		title: 'Building generative AI products',
+		fact: 'Leading engineering for Enterprise AI search and retrieval platform serving millions of requests/day for Fortune 500 brands.',
 		source: 'Resume · Zoovu / XGen AI'
 	},
 	{
@@ -41,13 +56,13 @@ export const evidence = [
 		href: '#about',
 		source: 'Resume · Denso'
 	}
-] as const;
+] as const satisfies readonly Evidence[];
 export type EvidenceId = (typeof evidence)[number]['id'];
 export type RoleMatch = {
 	matches: { evidenceId: EvidenceId; requirement: string }[];
 	gaps: string[];
 };
-export function getEvidence(id: EvidenceId) {
+export function getEvidence(id: EvidenceId): Evidence {
 	return evidence.find((item) => item.id === id)!;
 }
 
