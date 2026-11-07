@@ -44,9 +44,7 @@
 		<section class="hero" aria-labelledby="hero-title">
 			<div class="hero-copy">
 				<p class="eyebrow hero-eyebrow">Lead software engineer at Zoovu</p>
-				<h1 id="hero-title">
-					I’m Hunter.<br />I build software<br />and lead teams.
-				</h1>
+				<h1 id="hero-title">I’m a software engineer who likes figuring out how things work.</h1>
 				<p class="hero-description">
 					My background is in mechanical engineering. These days I work on product discovery,
 					interfaces, and the systems behind them.
