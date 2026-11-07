@@ -5,6 +5,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/favicon.svg" />
 		<meta name="text-scale" content="scale" />
+		<script>
+			// Apply before first paint so a saved dark theme never flashes light.
+			(() => {
+				let theme = 'system';
+				try {
+					const saved = localStorage.getItem('portfolio-theme');
+					if (saved === 'light' || saved === 'dark') theme = saved;
+				} catch {
+					// Storage may be blocked; the system preference still works.
+				}
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.classList.toggle(
+					'dark',
+					theme === 'dark' ||
+						(theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+				);
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

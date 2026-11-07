@@ -516,7 +516,7 @@
 		place-items: center;
 		width: 62px;
 		height: 62px;
-		border: 1px solid #b6c5ac;
+		border: 1px solid var(--input);
 		border-radius: 50%;
 		color: var(--primary);
 		margin-bottom: 25px;

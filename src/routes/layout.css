@@ -7,47 +7,51 @@
 @plugin '@tailwindcss/typography';
 
 :root {
+	color-scheme: light;
 	--background: #f6f5f0;
-	--foreground: #242d28;
+	--foreground: #292723;
 	--card: #fdfcf8;
-	--card-foreground: #242d28;
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
-	--primary: #315e48;
-	--primary-foreground: #fdfcf8;
-	--secondary: #f1f1e9;
-	--secondary-foreground: #242d28;
-	--muted: #eeeee6;
-	--muted-foreground: #646c62;
-	--accent: #e5eadf;
-	--accent-foreground: #315e48;
-	--destructive: #a94b3e;
-	--border: #dcded4;
-	--input: #ced3c7;
-	--ring: #6f9375;
+	--card-foreground: #292723;
+	--popover: #fdfcf8;
+	--popover-foreground: #292723;
+	/* Tennessee orange for fills; a deeper orange keeps small text readable. */
+	--vol-orange: #ff8200;
+	--primary: #a34800;
+	--primary-foreground: #ffffff;
+	--secondary: #efede7;
+	--secondary-foreground: #292723;
+	--muted: #efede7;
+	--muted-foreground: #686158;
+	--accent: #f5e5d5;
+	--accent-foreground: #a34800;
+	--destructive: #a13629;
+	--border: #d9d2c8;
+	--input: #93877a;
+	--ring: #a34800;
 	--radius: 0.35rem;
 	--font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 }
 
 .dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.985 0 0);
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.205 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.269 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.556 0 0);
+	color-scheme: dark;
+	--background: #191817;
+	--foreground: #f4efe7;
+	--card: #211f1c;
+	--card-foreground: #f4efe7;
+	--popover: #211f1c;
+	--popover-foreground: #f4efe7;
+	--primary: var(--vol-orange);
+	--primary-foreground: #21180f;
+	--secondary: #292521;
+	--secondary-foreground: #f4efe7;
+	--muted: #292521;
+	--muted-foreground: #bdb3a7;
+	--accent: #3b2b1e;
+	--accent-foreground: #ff9d38;
+	--destructive: #ff9d90;
+	--border: #494038;
+	--input: #8c7b6a;
+	--ring: var(--vol-orange);
 }
 
 @theme inline {
@@ -99,8 +103,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 ::selection {
-	background: #dce6cd;
-	color: #254b39;
+	background: var(--accent);
+	color: var(--accent-foreground);
 }
 button,
 a,
@@ -139,7 +143,7 @@ a:focus-visible {
 	display: inline-block;
 	width: 6px;
 	height: 6px;
-	background: var(--primary);
+	background: var(--vol-orange);
 	border-radius: 50%;
 	flex-shrink: 0;
 }
@@ -169,7 +173,7 @@ a:focus-visible {
 	line-height: 1;
 }
 .monogram > span {
-	color: var(--primary);
+	color: var(--vol-orange);
 }
 .wordmark > span:last-child {
 	font: 9px var(--font-mono);
@@ -262,7 +266,7 @@ a:focus-visible {
 	position: absolute;
 	left: -21px;
 	top: -2px;
-	color: #9ca791;
+	color: var(--muted-foreground);
 	font-size: 16px;
 }
 .hero-ballpark {
@@ -273,7 +277,7 @@ a:focus-visible {
 	margin-inline: -25px;
 }
 .visual-orbit {
-	border: 1px dashed #c9d0bf;
+	border: 1px dashed var(--border);
 	position: absolute;
 	width: 90%;
 	height: 47%;
@@ -298,7 +302,7 @@ a:focus-visible {
 .caption-line {
 	width: 30px;
 	height: 1px;
-	background: #a7b49b;
+	background: var(--border);
 	margin-top: 7px;
 }
 .hero-invitation {
@@ -501,7 +505,7 @@ h2 {
 }
 .stack-list span {
 	margin: 0 7px;
-	color: #9ca791;
+	color: var(--muted-foreground);
 }
 .case-details {
 	display: flex;
@@ -520,7 +524,7 @@ h2 {
 	margin-top: 8px;
 }
 .case-takeaway {
-	border-left: 2px solid #8ba27e;
+	border-left: 2px solid var(--vol-orange);
 	padding: 4px 0 4px 20px;
 	margin-top: 4px;
 }
@@ -556,7 +560,7 @@ h2 {
 	margin-top: 6px;
 }
 .builder-note {
-	background: #e9eddf;
+	background: var(--accent);
 	padding: 27px 32px 24px;
 	position: relative;
 }
@@ -576,7 +580,7 @@ h2 {
 	top: 14px;
 	right: 15px;
 	font: 19px var(--font-mono);
-	color: #98a68c;
+	color: var(--primary);
 }
 .note-signature {
 	font-family: Georgia, serif;
@@ -623,7 +627,7 @@ h2 {
 	align-items: center;
 	font-size: 18px;
 	margin-top: 28px;
-	border-bottom: 1px solid #9eaf96;
+	border-bottom: 1px solid var(--primary);
 	padding-bottom: 8px;
 	color: var(--primary);
 	letter-spacing: -0.025em;
@@ -1036,5 +1040,24 @@ h2 {
 	*::after {
 		animation-duration: 0.01ms !important;
 		transition-duration: 0.01ms !important;
+	}
+}
+
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+}
+@media (max-width: 760px) {
+	.site-header {
+		height: auto;
+		min-height: 80px;
+		flex-wrap: wrap;
+		gap: 18px;
+		padding-block: 18px;
+	}
+	.header-actions {
+		flex-wrap: wrap;
+		gap: 16px;
 	}
 }

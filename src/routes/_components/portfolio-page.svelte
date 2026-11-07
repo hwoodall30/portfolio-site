@@ -7,6 +7,7 @@
 	import Linkedin from '@lucide/svelte/icons/briefcase-business';
 	import Download from '@lucide/svelte/icons/download';
 	import Mail from '@lucide/svelte/icons/mail';
+	import ThemePicker from '#lib/components/app/theme-picker.svelte';
 	import Ballpark from '#lib/components/app/ballpark.svelte';
 	import RoleMatcher from './role-matcher.svelte';
 	import { Button } from '#lib/components/ui/button/index.js';
@@ -30,11 +31,14 @@
 		<a href="#main" class="wordmark" aria-label="Hunter Woodall home"
 			><span class="monogram">hw<span>.</span></span><span>HUNTER WOODALL</span></a
 		>
-		<nav aria-label="Main navigation">
-			<a href="#work">Work</a><a href="#about">About</a><a href="#contact" class="contact-nav"
-				>Let’s talk <ArrowUpRight size={14} /></a
-			>
-		</nav>
+		<div class="header-actions">
+			<nav aria-label="Main navigation">
+				<a href="#work">Work</a><a href="#about">About</a><a href="#contact" class="contact-nav"
+					>Let’s talk <ArrowUpRight size={14} /></a
+				>
+			</nav>
+			<ThemePicker />
+		</div>
 	</header>
 	<main id="main">
 		<section class="hero" aria-labelledby="hero-title">
