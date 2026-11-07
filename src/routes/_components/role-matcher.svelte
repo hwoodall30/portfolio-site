@@ -22,6 +22,7 @@
 	let cached = $state<ModelCache | null>(null);
 	let cacheMessage = $state('Checking model storage…');
 	let clearing = $state(false);
+
 	async function refreshCache() {
 		const inspected = await attempt<string, ModelCache>(() => inspectModelCache());
 		if (inspected.error !== null) {
@@ -33,6 +34,7 @@
 			? `${cached.files} model-related files stored for this site.`
 			: 'No model files stored for this site.';
 	}
+
 	async function clearDownloads() {
 		clearing = true;
 		cancel();
@@ -43,9 +45,11 @@
 		else await refreshCache();
 		clearing = false;
 	}
+
 	onMount(() => {
 		void refreshCache();
 	});
+
 	let ai = $state.raw<Awaited<ReturnType<typeof createLocalAI>> | null>(null);
 	let controller: AbortController | null = null;
 	let operation = 0;
@@ -53,6 +57,7 @@
 	const weightsCached = $derived(
 		cached?.models.some((model) => model.name === MODEL_ID && model.complete) ?? false
 	);
+
 	function preview(index: number) {
 		const example = roleExamples[index];
 		input = example.input;
@@ -62,6 +67,7 @@
 		error = '';
 		errorDetails = '';
 	}
+
 	function cancel() {
 		operation++;
 		controller?.abort();
@@ -69,6 +75,7 @@
 		ai = null;
 		aiState = 'off';
 	}
+
 	async function match(download = false) {
 		if (busy || !input.trim()) return;
 		if (!ai && !download) {
@@ -122,6 +129,7 @@
 		resultSource = 'ai';
 		aiState = 'ready';
 	}
+
 	onDestroy(cancel);
 </script>
 

@@ -4,22 +4,26 @@ test('theme follows the system and remembers an explicit choice', async ({ page 
 	await page.emulateMedia({ colorScheme: 'dark' });
 	await page.goto('/');
 	await expect(page.locator('html')).toHaveClass('dark');
-	const picker = page.getByLabel('Color theme');
-	await expect(picker).toHaveValue('system');
-	await picker.selectOption('light');
+	const system = page.getByRole('button', { name: 'Use system theme' });
+	await expect(system).toHaveAttribute('aria-pressed', 'true');
+	await page.getByRole('button', { name: 'Switch to light theme' }).click();
+	await expect(system).toHaveAttribute('aria-pressed', 'false');
 	await expect(page.locator('html')).not.toHaveClass('dark');
 	await page.reload();
-	await expect(picker).toHaveValue('light');
+	await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
 	await expect(page.locator('html')).not.toHaveClass('dark');
-	await picker.selectOption('dark');
+	await page.getByRole('button', { name: 'Switch to dark theme' }).click();
 	await page.reload();
-	await expect(picker).toHaveValue('dark');
+	await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 	await expect(page.locator('html')).toHaveClass('dark');
-	await picker.selectOption('system');
+	await system.click();
+	await expect(system).toHaveAttribute('aria-pressed', 'true');
 	await page.emulateMedia({ colorScheme: 'light' });
 	await expect(page.locator('html')).not.toHaveClass('dark');
 	await page.emulateMedia({ colorScheme: 'dark' });
 	await expect(page.locator('html')).toHaveClass('dark');
+	await page.reload();
+	await expect(system).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('theme still switches when browser storage is blocked', async ({ page }) => {
@@ -30,8 +34,9 @@ test('theme still switches when browser storage is blocked', async ({ page }) =>
 			}
 		});
 	});
+	await page.emulateMedia({ colorScheme: 'light' });
 	await page.goto('/');
-	await page.getByLabel('Color theme').selectOption('dark');
+	await page.getByRole('button', { name: 'Switch to dark theme' }).click();
 	await expect(page.locator('html')).toHaveClass('dark');
 	await expect(
 		page.getByRole('status').filter({ hasText: 'Theme applied for this visit' })
@@ -39,9 +44,15 @@ test('theme still switches when browser storage is blocked', async ({ page }) =>
 });
 
 test('text palettes meet WCAG AA contrast in both themes', async ({ page }) => {
+	await page.emulateMedia({ colorScheme: 'light' });
 	await page.goto('/');
 	for (const theme of ['light', 'dark']) {
-		await page.getByLabel('Color theme').selectOption(theme);
+		if (
+			(await page.locator('html').evaluate((element) => element.classList.contains('dark'))) !==
+			(theme === 'dark')
+		) {
+			await page.getByRole('button', { name: `Switch to ${theme} theme` }).click();
+		}
 		const ratios = await page.evaluate(() => {
 			const style = getComputedStyle(document.documentElement);
 			function luminance(token: string) {

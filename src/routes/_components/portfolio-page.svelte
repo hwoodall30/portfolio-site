@@ -11,6 +11,7 @@
 	import Ballpark from '#lib/components/app/ballpark.svelte';
 	import RoleMatcher from './role-matcher.svelte';
 	import { Button } from '#lib/components/ui/button/index.js';
+
 	let easterEgg = $state(false);
 	const skills = [
 		{
