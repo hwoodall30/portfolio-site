@@ -3,11 +3,36 @@ export type Evidence = {
 	title: string;
 	fact: string;
 	href?: `#${string}` | `https://${string}` | `http://${string}`;
+	links?: readonly { label: string; href: `https://${string}` }[];
 	source?: string;
 };
 
 // Add authored experience here. Links and source labels are optional.
 export const evidence = [
+	{
+		id: 'freelance-websites',
+		title: 'Delivering websites for freelance clients',
+		fact: 'Built websites for a local graphic design company as a freelance developer, including Village Collab and Vote Facts Blount.',
+		links: [
+			{ label: 'Village Collab', href: 'https://www.village-collab.org/' },
+			{ label: 'Vote Facts Blount', href: 'https://votefactsblount.com/' }
+		],
+		source: 'Freelance work'
+	},
+	{
+		id: 'workout-rivals',
+		title: 'Building a fitness competition app',
+		fact: 'Created Workout Rivals, an application that lets users start fitness competitions with one another and track their workout statistics throughout each competition.',
+		href: 'https://workout-rivals.woodallstack.dev/',
+		source: 'Personal project · Workout Rivals'
+	},
+	{
+		id: 'golf-app',
+		title: 'Turning course location data into golf shot guidance',
+		fact: 'Created a golf application that uses location data for a local course to calculate shot distances and recommend clubs for individual shots.',
+		href: 'https://golf-app.woodallstack.dev/',
+		source: 'Personal project · Golf app'
+	},
 	{
 		id: 'leadership',
 		title: 'Leading engineers through delivery',
@@ -55,6 +80,30 @@ export const evidence = [
 		fact: 'Worked on an in-house live manufacturing dashboard at Denso. Automated an inventory workflow saving 150 hours a year. Background in mechanical and process engineering.',
 		href: '#about',
 		source: 'Resume · Denso'
+	},
+	{
+		id: 'data-pipelines',
+		title: 'Owning multi-tenant data ingestion',
+		fact: 'Owns a multi-tenant ETL pipeline that ingests and normalizes customer data from many source formats.',
+		source: 'Resume · Zoovu / XGen AI'
+	},
+	{
+		id: 'backend-apis',
+		title: 'Developing customer-facing platforms and APIs',
+		fact: 'Developed a customer-facing platform and backend APIs using GraphQL, Go, and Python at XGen AI. Built frontend and backend architectures using JavaScript and C# and administered databases for production applications at Denso.',
+		source: 'Resume · XGen AI / Denso'
+	},
+	{
+		id: 'mcp-tooling',
+		title: 'Building MCP tools for natural-language administration',
+		fact: 'Built an MCP server that gives staff natural-language administrative control and provides customers with role-scoped, read-only access.',
+		source: 'Resume · XGen AI'
+	},
+	{
+		id: 'customer-delivery',
+		title: 'Guiding enterprise implementations and onboarding',
+		fact: 'Leads customer implementations and onboarding, partnering with Product, Design, and Operations to prioritize improvements informed by customer feedback. Led a team delivering AI software to enterprise customers including Gucci, Sonos, and Coach.',
+		source: 'Resume · Zoovu / XGen AI'
 	}
 ] as const satisfies readonly Evidence[];
 export type EvidenceId = (typeof evidence)[number]['id'];

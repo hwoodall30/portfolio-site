@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { evidence, roleExamples, validateMatch } from './evidence';
+import { getEvidence, roleExamples, validateMatch } from './evidence';
 
 describe('grounded role matching', () => {
 	it('validates every authored preview against its own input', () => {
@@ -51,6 +51,6 @@ describe('grounded role matching', () => {
 				'mentor a team'
 			)
 		).toEqual({ matches: [{ evidenceId: 'leadership', requirement: 'mentor a team' }], gaps: [] });
-		expect(evidence.every((item) => !item.href || item.href.startsWith('#'))).toBe(true);
+		expect(getEvidence('leadership').href).toBe('#about');
 	});
 });

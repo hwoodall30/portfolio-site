@@ -289,7 +289,17 @@
 					<blockquote>“{connection.requirement}”</blockquote>
 					<h5>{item.title}</h5>
 					<p>{item.fact}</p>
-					{#if item.href}
+					{#if item.links?.length}
+						<p>{item.source}</p>
+						<ul>
+							{#each item.links as link (link.href)}
+								<li>
+									<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+									<a href={link.href}>{link.label}<ArrowUpRight size={13} /></a>
+								</li>
+							{/each}
+						</ul>
+					{:else if item.href}
 						<!-- Authored evidence links are page fragments or external URLs, not app routes. -->
 						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 						<a href={item.href}>{item.source || 'View evidence'}<ArrowUpRight size={13} /></a>
