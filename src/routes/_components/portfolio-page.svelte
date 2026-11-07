@@ -46,8 +46,9 @@
 				<p class="eyebrow hero-eyebrow">Lead software engineer at Zoovu</p>
 				<h1 id="hero-title">I’m a software engineer who likes figuring out how things work.</h1>
 				<p class="hero-description">
-					My background is in mechanical engineering. These days I work on product discovery,
-					interfaces, and the systems behind them.
+					I build AI products, from agents and retrieval systems to the interfaces people use to
+					work with them. I started in mechanical engineering and still like understanding how all
+					the pieces fit together.
 				</p>
 				<div class="hero-actions">
 					<Button href="#work" size="lg">See my work <ArrowDown data-icon="inline-end" /></Button><a
