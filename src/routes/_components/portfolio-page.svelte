@@ -43,7 +43,7 @@
 	<main id="main">
 		<section class="hero" aria-labelledby="hero-title">
 			<div class="hero-copy">
-				<p class="eyebrow hero-eyebrow">Lead software engineer at Zoovu</p>
+				<p class="eyebrow hero-eyebrow">Lead software engineer</p>
 				<h1 id="hero-title">I’m a software engineer who likes figuring out how things work.</h1>
 				<p class="hero-description">
 					I build AI products, from agents and retrieval systems to the interfaces people use to
@@ -177,9 +177,9 @@
 					the systems people rely on. Software became another way to solve those problems.
 				</p>
 				<p>
-					Today, I lead software engineering at Zoovu, following its acquisition of XGen AI. My work
-					spans product decisions, architecture, generative AI, and helping engineers do their best
-					work.
+					Today, I lead a software engineering team at Zoovu, following its acquisition of XGen AI.
+					My work spans product decisions, architecture, generative AI, and helping engineers do
+					their best work.
 				</p>
 				<p>
 					I’m drawn to products that help people find, understand, and act on information. Outside
