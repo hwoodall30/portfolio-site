@@ -200,6 +200,7 @@ test('real local model connects a team-lead requirement to evidence', async ({ p
 		throw new Error((await diagnostic.textContent()) ?? 'Local AI failed.');
 	await expect(page.locator('.connection').first()).toBeVisible();
 	for (const role of [
+		'Front end',
 		'We need TypeScript and React experience.',
 		'We need to reduce LLM spending.'
 	]) {
@@ -211,6 +212,12 @@ test('real local model connects a team-lead requirement to evidence', async ({ p
 		if (await diagnostic.count())
 			throw new Error((await diagnostic.textContent()) ?? 'Local AI failed.');
 		await expect(page.locator('.connection').first()).toBeVisible();
+		if (role === 'Front end') {
+			await expect(
+				page.locator('.connection h5', { hasText: 'Working across modern frontend stacks' })
+			).toBeVisible();
+			await expect(page.locator('.connection')).toHaveCount(3);
+		}
 		await expect(page.getByRole('button', { name: 'Download & match' })).toHaveCount(0);
 	}
 });

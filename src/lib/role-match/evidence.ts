@@ -2,6 +2,7 @@ export type Evidence = {
 	id: string;
 	title: string;
 	fact: string;
+	tags: readonly string[];
 	href?: `#${string}` | `https://${string}` | `http://${string}`;
 	links?: readonly { label: string; href: `https://${string}` }[];
 	source?: string;
@@ -11,6 +12,7 @@ export type Evidence = {
 export const evidence = [
 	{
 		id: 'signalflow',
+		tags: ['frontend', 'JavaScript', 'UI library', 'signals', 'reactivity', 'interactive widgets'],
 		title: 'Building a lightweight reactive UI library',
 		fact: 'Created SignalFlow, a JavaScript library that uses signals for fine-grained UI updates at runtime. Enables projects without a framework to add interactive widgets without a build step or heavy framework dependencies.',
 		href: 'https://github.com/hwoodall30/SignalFlow',
@@ -18,6 +20,7 @@ export const evidence = [
 	},
 	{
 		id: 'freelance-websites',
+		tags: ['frontend', 'web development', 'websites', 'freelance', 'client delivery'],
 		title: 'Delivering websites for freelance clients',
 		fact: 'Built websites for a local graphic design company as a freelance developer, including Village Collab and Vote Facts Blount.',
 		links: [
@@ -28,6 +31,7 @@ export const evidence = [
 	},
 	{
 		id: 'workout-rivals',
+		tags: ['application development', 'fitness', 'competitions', 'statistics tracking'],
 		title: 'Building a fitness competition app',
 		fact: 'Created Workout Rivals, an application that lets users start fitness competitions with one another and track their workout statistics throughout each competition.',
 		href: 'https://workout-rivals.woodallstack.dev/',
@@ -35,6 +39,13 @@ export const evidence = [
 	},
 	{
 		id: 'golf-app',
+		tags: [
+			'application development',
+			'golf',
+			'location data',
+			'distance calculations',
+			'club recommendations'
+		],
 		title: 'Turning course location data into golf shot guidance',
 		fact: 'Created a golf application that uses location data for a local course to calculate shot distances and recommend clubs for individual shots.',
 		href: 'https://golf-app.woodallstack.dev/',
@@ -42,6 +53,13 @@ export const evidence = [
 	},
 	{
 		id: 'leadership',
+		tags: [
+			'engineering leadership',
+			'mentoring',
+			'team management',
+			'architecture',
+			'technical planning'
+		],
 		title: 'Leading engineers through delivery',
 		fact: 'Leads and mentors 10 engineers across experience levels. Serves as primary technical solution designer, translating customer needs into architectures and implementation plans.',
 		href: '#about',
@@ -49,12 +67,20 @@ export const evidence = [
 	},
 	{
 		id: 'generative-ai',
+		tags: ['generative AI', 'enterprise search', 'retrieval', 'high traffic'],
 		title: 'Building generative AI products',
 		fact: 'Leading engineering for Enterprise AI search and retrieval platform serving millions of requests/day for Fortune 500 brands.',
 		source: 'Resume · Zoovu / XGen AI'
 	},
 	{
 		id: 'intent',
+		tags: [
+			'AI agents',
+			'natural language',
+			'catalog data',
+			'deterministic filters',
+			'product engineering'
+		],
 		title: 'Turning user intent into reliable AI',
 		fact: 'Observed merchandising workflows, then designed and implemented a catalog-grounded agent that translates natural language into deterministic, inspectable filters. Merchandisers could build complex filters independently in minutes.',
 		href: '#case-study',
@@ -62,6 +88,16 @@ export const evidence = [
 	},
 	{
 		id: 'scale',
+		tags: [
+			'backend',
+			'search',
+			'recommendations',
+			'filtering',
+			'faceting',
+			'caching',
+			'reliability',
+			'scale'
+		],
 		title: 'Building systems that handle real scale',
 		fact: 'Built an in-house filtering and faceting engine used by recommendation and search systems serving millions of requests per day. Work includes caching and reliability.',
 		href: '#impact',
@@ -69,6 +105,7 @@ export const evidence = [
 	},
 	{
 		id: 'cost',
+		tags: ['LLM', 'inference costs', 'cost optimization', 'generative AI'],
 		title: 'Making AI more efficient',
 		fact: 'Reduced LLM spending by 24% in 2026. Leads engineering for a generative AI search product.',
 		href: '#impact',
@@ -76,6 +113,19 @@ export const evidence = [
 	},
 	{
 		id: 'frontend',
+		tags: [
+			'frontend',
+			'TypeScript',
+			'Svelte',
+			'SvelteKit',
+			'React',
+			'Next.js',
+			'Angular',
+			'Tailwind',
+			'React Native',
+			'Playwright',
+			'Vitest'
+		],
 		title: 'Working across modern frontend stacks',
 		fact: 'Frontend skills include TypeScript, Svelte/SvelteKit, React/Next.js, Angular, Tailwind and React Native. Testing skills include Playwright and Vitest.',
 		href: '#about',
@@ -83,6 +133,12 @@ export const evidence = [
 	},
 	{
 		id: 'operations',
+		tags: [
+			'manufacturing',
+			'operational dashboards',
+			'inventory automation',
+			'process engineering'
+		],
 		title: 'Connecting software to physical operations',
 		fact: 'Worked on an in-house live manufacturing dashboard at Denso. Automated an inventory workflow saving 150 hours a year. Background in mechanical and process engineering.',
 		href: '#about',
@@ -90,24 +146,44 @@ export const evidence = [
 	},
 	{
 		id: 'data-pipelines',
+		tags: ['backend', 'ETL', 'data ingestion', 'data normalization', 'multi-tenant'],
 		title: 'Owning multi-tenant data ingestion',
 		fact: 'Owns a multi-tenant ETL pipeline that ingests and normalizes customer data from many source formats.',
 		source: 'Resume · Zoovu / XGen AI'
 	},
 	{
 		id: 'backend-apis',
+		tags: [
+			'backend',
+			'API development',
+			'GraphQL',
+			'Go',
+			'Python',
+			'JavaScript',
+			'C#',
+			'databases',
+			'frontend'
+		],
 		title: 'Developing customer-facing platforms and APIs',
 		fact: 'Developed a customer-facing platform and backend APIs using GraphQL, Go, and Python at XGen AI. Built frontend and backend architectures using JavaScript and C# and administered databases for production applications at Denso.',
 		source: 'Resume · XGen AI / Denso'
 	},
 	{
 		id: 'mcp-tooling',
+		tags: ['MCP', 'AI tools', 'natural language', 'administration', 'role-scoped access'],
 		title: 'Building MCP tools for natural-language administration',
 		fact: 'Built an MCP server that gives staff natural-language administrative control and provides customers with role-scoped, read-only access.',
 		source: 'Resume · XGen AI'
 	},
 	{
 		id: 'customer-delivery',
+		tags: [
+			'enterprise customers',
+			'implementations',
+			'onboarding',
+			'cross-functional collaboration',
+			'customer feedback'
+		],
 		title: 'Guiding enterprise implementations and onboarding',
 		fact: 'Leads customer implementations and onboarding, partnering with Product, Design, and Operations to prioritize improvements informed by customer feedback. Led a team delivering AI software to enterprise customers including Gucci, Sonos, and Coach.',
 		source: 'Resume · Zoovu / XGen AI'
