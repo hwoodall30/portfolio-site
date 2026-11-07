@@ -20,7 +20,7 @@
 		property="og:image:alt"
 		content="Orange hw. monogram above Hunter Woodall — Software engineer, building AI products."
 	/>
-	<meta property="og:video" content="https://portfolio.woodallstack.dev/hw-preview.mp4" />
+	<meta property="og:video" content="https://portfolio.woodallstack.dev/share/hw.mp4" />
 	<meta property="og:video:type" content="video/mp4" />
 	<meta property="og:video:width" content="1200" />
 	<meta property="og:video:height" content="630" />
